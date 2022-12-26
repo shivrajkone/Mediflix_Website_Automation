@@ -3,6 +3,7 @@ package website_modules;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.html5.LocalStorage;
@@ -21,7 +22,7 @@ public class verify_content
 
 	SoftAssert softAssert = new SoftAssert();
 	
-	
+	 
 	WebElement name;
 	WebElement desc;
 	WebElement slug;
@@ -44,8 +45,8 @@ public class verify_content
 	String content_url2="https://www.freelogo.com/image3";
 	String content_poster_url2="https://www.freelogo.com/image4";
 
-//	@Test (enabled = false)
-	@Test (priority=1)
+	@Test (enabled = false)
+//	@Test (priority=1)
 	public void local_store()
 	{
 		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
@@ -78,8 +79,8 @@ public class verify_content
 	}
 	
 
-//	@Test (enabled = false)
-	@Test (priority=2)
+	@Test (enabled = false)
+//	@Test (priority=2)
 	public void create_content() throws InterruptedException
 	{
 		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
@@ -249,8 +250,8 @@ public class verify_content
 	@Test (priority=4)
 	public void verify_the_created_content() throws InterruptedException
 	{
-//				driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
-//				driver.manage().window().maximize();
+				driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
+				driver.manage().window().maximize();
 				//click search 
 		
 				System.out.println("Verify the created content in website by search*********************");
@@ -297,6 +298,56 @@ public class verify_content
 					AssertJUnit.assertEquals(s1, content_name2);
 					
 				}
+		        
+		        //click  video  
+		        
+		        WebDriverWait click_video = new WebDriverWait(driver, Duration.ofSeconds(60));
+		        click_video.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[2]/div[2]/div/div[1]/div/div[1]/span[2]"))).click();
+		        System.out.println("click video ____________________");
+		        
+		        Thread.sleep(3000);
+		        
+		        //scroll
+			    JavascriptExecutor js = (JavascriptExecutor)driver; 
+			    js.executeScript("window.scrollBy(0,400)");
+		        
+		        //click add watchlist  
+		        WebDriverWait click_watchlist= new WebDriverWait(driver, Duration.ofSeconds(60));
+		        click_video.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Add to watchlist']"))).click();
+		        System.out.println("click watchlist ____________________");
+		        
+		        
+		        //click like   
+		        WebDriverWait click_like = new WebDriverWait(driver, Duration.ofSeconds(60));
+		        click_like.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Like']"))).click();	
+		        System.out.println("click like the video ____________________");
+		        
+		        //read bio   
+		       String bio=driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div/p")).getText();
+		       System.out.println("bio is ____________________"+bio);
+		       
+		       
+		       Thread.sleep(5000);
+		       
+		       	//click for unfollow   
+		        
+
+		        //click add watchlist  
+		        WebDriverWait click_unwatchlist= new WebDriverWait(driver, Duration.ofSeconds(60));
+		        click_unwatchlist.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div/div[1]/div[1]/button[2]"))).click();
+		        System.out.println("click unwatchlist ____________________"+click_watchlist);
+		        
+		        
+		        //click like   
+		        WebDriverWait click_unlike = new WebDriverWait(driver, Duration.ofSeconds(60));
+		        click_unlike.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div/div[1]/div[1]/button[1]"))).click();
+		        System.out.println("click unlike the video ____________________");
+		        
+		       
+		       
+		       
+			    
+		       
 		        
 	}
 	

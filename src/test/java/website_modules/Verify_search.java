@@ -24,7 +24,7 @@ public class Verify_search
 	String expert="Ray Dorsey, MD";
 	String channel="cdn";
 	String advice="What type of health care do I need?";
-
+ 
 	@Test (priority=1)
 	public void website_login() throws InterruptedException
 	{
