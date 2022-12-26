@@ -55,7 +55,7 @@ public class LoginAutomation
 	
 	WebElement search;
 	String key="Psychosis";
-	 
+	  
 	
 	 
 	@Test (priority =1)
