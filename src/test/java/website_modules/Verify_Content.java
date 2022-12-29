@@ -22,7 +22,7 @@ public class Verify_Content
 
 	SoftAssert softAssert = new SoftAssert();
 	
-	     
+	      
 	WebElement name;
 	WebElement desc;
 	WebElement slug;
