@@ -14,15 +14,15 @@ import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-public class verify_content 
+ 
+public class Verify_Content 
 {
 
 	ChromeDriver driver; 
 
 	SoftAssert softAssert = new SoftAssert();
 	
-	  
+	     
 	WebElement name;
 	WebElement desc;
 	WebElement slug;

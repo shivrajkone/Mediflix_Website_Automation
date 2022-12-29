@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.AssertJUnit;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -70,11 +72,8 @@ public class Verify_expert
 				
 				//load
 				Thread.sleep(4000);
-				
-				
-				
+			
 				System.out.println("Verify the expert in website*********************");
-				
 				
 				//scroll
 			    JavascriptExecutor js = (JavascriptExecutor)driver; 
@@ -98,6 +97,20 @@ public class Verify_expert
 			    String s1 =driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/p[1]")).getText();
 			    System.out.println("expert name is_____________________"+s1);
 			    
+			    if(s1.equals(s1))
+				{
+					System.out.println("Expert name is present");
+					AssertJUnit.assertEquals(s1, s1);
+				}
+				else
+				{
+					System.out.println("Expert name is not present");
+					AssertJUnit.assertEquals(s1, s1);
+					Reporter.log( "[ERROR] -> Advice -> Expert -> Expert name is not present.");
+				}
+			    
+			    
+			    
 			    // tags   
 			    
 			    WebDriverWait tags = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -106,6 +119,19 @@ public class Verify_expert
 			    String s2 =driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/p[2]")).getText();
 			    System.out.println("expert tags is_____________________"+s2);
 			    
+			    if(s2.equals(s2))
+				{
+					System.out.println("Expert tags is present");
+					AssertJUnit.assertEquals(s2, s2);
+				}
+				else
+				{
+					System.out.println("Expert tags is not present");
+					AssertJUnit.assertEquals(s2, s2);
+					Reporter.log( "[ERROR] -> Advice -> Expert -> Expert tags is not present.");
+				}
+			    
+			     
 			    //bio  
 			    
 			    WebDriverWait bio = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -113,6 +139,18 @@ public class Verify_expert
 			    
 			    String s3 =driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/p[2]")).getText();
 			    System.out.println("expert bio is_____________________"+s3);
+			    
+			    if(s3.equals(s3))
+				{
+					System.out.println("Expert bio is present");
+					AssertJUnit.assertEquals(s3, s3);
+				}
+				else
+				{
+					System.out.println("Expert bio is not present");
+					AssertJUnit.assertEquals(s3, s3);
+					Reporter.log( "[ERROR] -> Advice -> Expert -> Expert bio is not present.");
+				}
 			   
 			    //questions   
 			    
@@ -122,6 +160,17 @@ public class Verify_expert
 			    String s4 =driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[3]/div")).getText();
 			    System.out.println("expert questions is_____________________"+s4);
 				
+			    if(s4.equals(s4))
+				{
+					System.out.println("Expert questions is present");
+					AssertJUnit.assertEquals(s4, s4);
+				}
+				else
+				{
+					System.out.println("Expert questions is not present");
+					AssertJUnit.assertEquals(s4, s4);
+					Reporter.log( "[ERROR] -> Advice -> Expert -> Expert questions is not present.");
+				}
 			    
 			    //follow and unfollow working or not
 			    

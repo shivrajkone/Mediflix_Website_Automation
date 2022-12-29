@@ -68,7 +68,7 @@ public class Verify_sharelink extends login
 		String url = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[1]/div[4]/div/div/div/div/div[3]/div[2]/input")).getAttribute("value");
 		System.out.println("url is __________"+url);
 		
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		
 		//open browser with link
 		
@@ -94,12 +94,13 @@ public class Verify_sharelink extends login
 		AssertJUnit.assertEquals(s1, s2);
 		Reporter.log( "[ERROR] -> Topic -> Share_Copy_Link -> Copied Url Is Not Same.");
 		}
+		Thread.sleep(10000);
 	    
 	}
 	
 	
 	@Test (priority=2)
-	public void verify_videos_sharelink() throws InterruptedException
+	public void verify_advice_sharelink() throws InterruptedException
 	{
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
@@ -108,9 +109,11 @@ public class Verify_sharelink extends login
 	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]")));
 	
-		System.out.println("Website -> Verify the share link in videos**************");
+		System.out.println("Website -> Verify the share link in advice**************");
+		
+		Thread.sleep(5000);
 	
-		// click video
+		// click advice
 		
 		WebDriverWait click_video = new WebDriverWait(driver, Duration.ofSeconds(30));
 		click_video.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[2]/div/div[3]/div/div/div[1]/div/div/div[1]/div[3]"))).click();
@@ -121,7 +124,9 @@ public class Verify_sharelink extends login
 		load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div/p[1]")));
 	
 		String s1 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div/p[1]")).getText();
-		System.out.println("the video title is ________________"+s1);
+		System.out.println("the advice question is ________________"+s1);
+		
+		Thread.sleep(4000);
 		
 		//click share  
 		
@@ -141,7 +146,7 @@ public class Verify_sharelink extends login
 		String url = driver.findElement(By.xpath("//input[@value='https://client-portal.us-east-1.dev.mediflix.com/browse/question/67']")).getAttribute("value");
 		System.out.println("url is __________"+url);
 				
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 				
 		//open browser with link
 				
@@ -154,7 +159,7 @@ public class Verify_sharelink extends login
 		load3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[1]/div[4]/h1")));
 				
 		String s2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div/p[1]")).getText();
-		System.out.println("New tab copied url topic title is ________________"+s2);
+		System.out.println("New tab copied url advice question is ________________"+s2);
 			
 		if(s1.equals(s2))
 		{
@@ -167,6 +172,7 @@ public class Verify_sharelink extends login
 			AssertJUnit.assertEquals(s1, s2);
 			Reporter.log( "[ERROR] -> Videos -> Share_Copy_Link -> Copied Url Is Not Same.");
 		}
+		Thread.sleep(10000);
 		
 	}
 	
@@ -187,18 +193,18 @@ public class Verify_sharelink extends login
 	    JavascriptExecutor js = (JavascriptExecutor)driver; 
 	    js.executeScript("window.scrollBy(0,400)");
 		
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 		//click expert  
-	    
+	     
 	    WebDriverWait click_expert = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_expert.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div/div[3]/div/div/div[1]/div/div/div[1]/button"))).click();
 	
-	    Thread.sleep(4000);
+	    Thread.sleep(5000);
 	    
 	    String s1 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/p[1]")).getText();
 		System.out.println("the expert name is ________________"+s1);
 		    
-	    
+		Thread.sleep(4000);
 		// click share   
 	    WebDriverWait click_share = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_share.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='space-x-3 hidden md:flex']//span[@class='relative'][normalize-space()='Share']")));
@@ -243,6 +249,7 @@ public class Verify_sharelink extends login
 	  			AssertJUnit.assertEquals(s1, s2);
 	  			Reporter.log( "[ERROR] -> Videos -> Share_Copy_Link -> Copied Url Is Not Same.");
 	  		}
+	  		Thread.sleep(10000);
 		
 	}
 	
@@ -258,7 +265,7 @@ public class Verify_sharelink extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='leading-180 whitespace-pre-line text-lg md:text-xl']")));
 	
 		System.out.println("Website -> Verify the share link in channel**************");
-	
+		Thread.sleep(5000);
 		//click channel   
 		
 		WebDriverWait click_channel = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -337,9 +344,87 @@ public class Verify_sharelink extends login
 			Reporter.log( "[ERROR] -> Videos -> Share_Copy_Link -> Copied Url Is Not Same.");
 		}
 	
-		 
+		Thread.sleep(10000);
 		
 		
 	}
+	
+	@Test (priority=5)
+	public void verify_videos_sharelink() throws InterruptedException
+	{
+		driver.manage().window().maximize();
+	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
+	    
+	    //load
+	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]")));
+	
+		System.out.println("Website -> Verify the share link in videos**************");
+	
+		// click video
+		
+		WebDriverWait click_video = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click_video.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[3]/div/div[3]/div/div/div[3]/div/div/div[1]/div[4]"))).click();
+																			   
+		//load   
+		
+		WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div[1]/div[1]/div[2]")));
+	
+		String s1 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div[1]/div[1]/div[2]/p")).getText();
+		System.out.println("the video title is ________________"+s1);
+		
+		Thread.sleep(4000);
+		
+		//click share  
+		
+		WebDriverWait click_share = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click_share.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Share']"))).click();
+			
+		Thread.sleep(4000);
+				
+		//click copy link   
+				
+		WebDriverWait click_copy_link = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click_copy_link.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Copy link']"))).click();
+				
+		Thread.sleep(4000);
+		
+		String url = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div[2]/input")).getAttribute("value");
+		System.out.println("url is __________"+url);
+				
+		Thread.sleep(3000);
+				
+		//open browser with link
+				
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		Thread.sleep(3000);
+		driver.get(url);
+				
+		//load   
+				
+		WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div[1]/div[1]/div[2]")));
+				
+		String s2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[4]/div[1]/div[1]/div[2]/p")).getText();
+		System.out.println("New tab copied url topic title is ________________"+s2);
+			
+		if(s1.equals(s2))
+		{
+			System.out.println("Copied url is same");
+			AssertJUnit.assertEquals(s1, s2);
+		}
+		else
+		{
+			System.out.println("Copied url is not same");
+			AssertJUnit.assertEquals(s1, s2);
+			Reporter.log( "[ERROR] -> Videos -> Share_Copy_Link -> Copied Url Is Not Same.");
+		}
+		Thread.sleep(5000);
+		
+	}
+	
+	
+	
 	
 }
