@@ -18,7 +18,7 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import java.time.Duration;
-   
+    
 public class Verify_Edit_Profile extends login
 {
 	
