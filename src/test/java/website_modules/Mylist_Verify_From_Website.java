@@ -52,7 +52,7 @@ public class Mylist_Verify_From_Website extends login
 	    WebDriverWait load_page = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    load_page.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'Obesity + Weight')]")));
 	    
-  
+   
 	    
 	    WebElement topic = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[1]/div/div/div/a"));
 	    act.moveToElement(topic);
