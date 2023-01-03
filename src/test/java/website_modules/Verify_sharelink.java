@@ -24,7 +24,7 @@ public class Verify_sharelink extends login
 	SoftAssert softAssert = new SoftAssert();
 	  
 	@Test (priority=1)
-	public void verify_topic_sharelink() throws InterruptedException
+	public void Verify_Topic_Sharelink() throws InterruptedException
 	{
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
@@ -100,7 +100,7 @@ public class Verify_sharelink extends login
 	
 	
 	@Test (priority=2)
-	public void verify_advice_sharelink() throws InterruptedException
+	public void Verify_Advice_Sharelink() throws InterruptedException
 	{
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
@@ -178,7 +178,7 @@ public class Verify_sharelink extends login
 	
 	
 	@Test (priority=3)
-	public void verify_expert_sharelink() throws InterruptedException
+	public void Verify_Expert_Sharelink() throws InterruptedException
 	{
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/advice");
@@ -255,7 +255,7 @@ public class Verify_sharelink extends login
 	
 	
 	@Test (priority=4)
-	public void verify_channel_sharelink() throws InterruptedException
+	public void Verify_Channel_Sharelink() throws InterruptedException
 	{
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/channels");
@@ -317,11 +317,15 @@ public class Verify_sharelink extends login
 		//load   
 		WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(30));
 		load3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='leading-180 whitespace-pre-line text-lg md:text-xl']")));
-			
+		
+		Thread.sleep(3000);
+		
 		//click learn more  
 		WebDriverWait learn2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 		learn2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Learn more']"))).click();
 				
+		Thread.sleep(3000);
+		
 		//title   
 		String s2 = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[1]/div[4]/div/div/div/div/div[3]/div/div[1]/div[2]/p")).getText();
 		System.out.println("Copied URl Channel title is ________________"+s2);
@@ -329,7 +333,8 @@ public class Verify_sharelink extends login
 		//click cancel 
 		WebDriverWait cancel2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 		cancel2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[1]/div[4]/div/div/div/div/div[3]/div/div[3]/div/button[1]/span"))).click();
-				
+		
+		Thread.sleep(3000);	
 	
 			
 		if(s1.equals(s2))
@@ -350,7 +355,7 @@ public class Verify_sharelink extends login
 	}
 	
 	@Test (priority=5)
-	public void verify_videos_sharelink() throws InterruptedException
+	public void Verify_Videos_Sharelink() throws InterruptedException
 	{
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
@@ -421,6 +426,8 @@ public class Verify_sharelink extends login
 			Reporter.log( "[ERROR] -> Videos -> Share_Copy_Link -> Copied Url Is Not Same.");
 		}
 		Thread.sleep(5000);
+		
+		driver.quit();
 		
 	}
 	

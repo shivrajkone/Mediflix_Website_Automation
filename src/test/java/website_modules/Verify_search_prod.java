@@ -12,66 +12,69 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class Verify_search 
+import access.login_prod;
+
+public class Verify_search_prod extends login_prod
+
 {
 	
 	
-	ChromeDriver driver; 
+//	ChromeDriver driver; 
 	SoftAssert softAssert = new SoftAssert();
 
-	String topic="Global Health";
-	String video="Planet";
+	String topic="Brain Health";
+	String video="Why BCRF?";
 	String expert="Ray Dorsey, MD";
 	String channel="cdn";
 	String advice="What type of health care do I need?";
       
+//	@Test (priority=1)
+//	public void website_login() throws InterruptedException
+//	{
+//		
+//		String Email="kashinath112@mailinator.com";
+//		String Password="Shivraj@12345";
+//		
+//		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
+//	    driver = new ChromeDriver();
+//	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/login");
+//	    driver.manage().window().maximize();
+//	    
+//	    Thread.sleep(4000);
+//	    
+//	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+//		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[normalize-space()='Log In']"))).click();
+//	    
+//	    WebElement email = driver.findElement(By.xpath("//input[@placeholder='Email']"));
+//	    email.sendKeys(Email);
+//	    
+//	    Thread.sleep(2000);
+//	    
+//	    WebElement password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
+//	    password.sendKeys(Password);
+//	    
+//	    Thread.sleep(2000);
+//	    
+//	    WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
+//	    submit.click();
+//	    
+//	    Thread.sleep(3000);
+//	    
+//	    WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+//	    load2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")));
+//	
+//	    // get data
+//	    String get_title = driver.findElement(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")).getText();
+//	    System.out.println("the login title of user is_________________"+get_title);
+//	    
+//		
+//	}
+	
 	@Test (priority=1)
-	public void website_login() throws InterruptedException
-	{
-		
-		String Email="kashinath112@mailinator.com";
-		String Password="Shivraj@12345";
-		
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
-	    driver = new ChromeDriver();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/login");
-	    driver.manage().window().maximize();
-	    
-	    Thread.sleep(4000);
-	    
-	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
-		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[normalize-space()='Log In']"))).click();
-	    
-	    WebElement email = driver.findElement(By.xpath("//input[@placeholder='Email']"));
-	    email.sendKeys(Email);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
-	    password.sendKeys(Password);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
-	    submit.click();
-	    
-	    Thread.sleep(3000);
-	    
-	    WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-	    load2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")));
-	
-	    // get data
-	    String get_title = driver.findElement(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")).getText();
-	    System.out.println("the login title of user is_________________"+get_title);
-	    
-		
-	}
-	
-	@Test (priority=4)
 	public void verify_serach_working() throws InterruptedException
 	{
 //				driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
-//				driver.manage().window().maximize();
+				driver.manage().window().maximize();
 				//click search 
 		
 				System.out.println("Verify the search in Website*********************");
@@ -103,7 +106,7 @@ public class Verify_search
 					
 				//verify the search   
 				
-				String s1= driver.findElement(By.xpath("//div[contains(text(),'Global health')]")).getText();
+				String s1= driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[2]/div[2]/div/div[3]/div/div/div/div/div/div/div[2]/div")).getText();
 				System.out.println("topic is_________________________"+s1);
 				
 				Thread.sleep(3000);
@@ -123,9 +126,9 @@ public class Verify_search
 									
 				//verify the search   
 				WebDriverWait load_video2 = new WebDriverWait(driver, Duration.ofSeconds(60));
-				load_video2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='flex-1 pt-8 max-w-full whitespace-normal truncate basis-60']")));
+				load_video2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[2]/div[2]/div/div[2]")));
 				
-				String s2= driver.findElement(By.xpath("//p[text()='Planet']")).getText();
+				String s2= driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[2]/div[2]/div/div[2]/p[1]")).getText();
 				System.out.println("video is_________________________"+s2);
 				
 				Thread.sleep(3000);
