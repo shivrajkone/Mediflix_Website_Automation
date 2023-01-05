@@ -3,7 +3,7 @@ package website_modules;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-import access.login;
+import access.Website_login_dev;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -18,8 +18,8 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import java.time.Duration;
-
-public class Verify_Edit_Profile extends login
+     
+public class Verify_Edit_Profile extends Website_login_dev
 {
 	
 	SoftAssert softAssert = new SoftAssert();
@@ -27,7 +27,7 @@ public class Verify_Edit_Profile extends login
 	String name="shivraj kone";
 	String zip="50031";
 	String birth_year="2000";
-	 
+	  
 	
 	 @Test (priority=1)
 //	 @Test (enabled = false)
@@ -42,6 +42,7 @@ public class Verify_Edit_Profile extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]"))).click();
 	
 		System.out.println("Website ->Verify Edit Profile**************");
+		Reporter.log("Website ->Verify Edit Profile");
 		
 		//click profile icon 
 	    WebDriverWait click_profile_icon2 = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -53,7 +54,7 @@ public class Verify_Edit_Profile extends login
 	   
 	    Thread.sleep(5000);
 	    // name  
-	    
+	     
 	    WebElement user_name = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[2]/div/div/div[2]/div/div/input"));
  
 	    user_name.clear();
