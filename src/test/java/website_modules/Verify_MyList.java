@@ -2,7 +2,7 @@ package website_modules;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-import access.login;
+import access.Website_login_dev;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -86,7 +86,7 @@ public class Verify_MyList
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]"))).click();
 	
 		System.out.println("Website -> Click and Follow Topics, Videos, Expert, Channel**************");
-	
+		Reporter.log("Website -> Click and Follow Topics, Videos, Expert, Channel");
 		 Thread.sleep(5000);
 	    
 	    WebDriverWait load_page = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -149,15 +149,16 @@ public class Verify_MyList
 	    expert_name = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]")).getText();
 	    System.out.println("expert is _________________"+expert_name);
 	    
+	    Thread.sleep(5000);
 	    //second advice
 	    //click advice
 	    
 	    WebDriverWait click_advice2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_advice2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div/div[3]/div/div/div[2]/div/div/div[1]/button"))).click();
-	
+	    Thread.sleep(3000);
 	    WebDriverWait click_follow2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_follow2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/button[1]"))).click();
-	    
+	    Thread.sleep(3000);
 	    // click cancel icon   
 	     
 	    WebDriverWait click_cancel = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -213,16 +214,16 @@ public class Verify_MyList
 		
 		driver.manage().window().maximize();
 	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
-	    driver.navigate().refresh();
+	 //   driver.navigate().refresh();
 	    
 	    
 	    //load
 	    Thread.sleep(7000);
 	    
 	    System.out.println("Website -> Verifying MyList From User Profile**************");
-		
+	    Reporter.log("Website -> Verifying MyList From User Profile");
 		 //click profile icon 
-	    WebDriverWait click_profile_icon2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    WebDriverWait click_profile_icon2 = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    click_profile_icon2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(@class,'relative')])[1]"))).click();
 	
 	    //click mylist  
@@ -239,7 +240,7 @@ public class Verify_MyList
 	    
 	    System.out.println("Verify MyList and following of topics************************");
 	    
-	    String topic_verify = driver.findElement(By.xpath("//div[contains(text(),'Obesity + Weight')]")).getText();
+	    String topic_verify = driver.findElement(By.xpath("/html/body/div[1]/div/main/div/div[2]/div/div[3]/div/div/div/div/div/div/div[2]/div")).getText();
 	   	    
 	    System.out.println("topic is _________________"+topic_verify);
 	    
@@ -419,7 +420,7 @@ public class Verify_MyList
 	    Thread.sleep(7000);
 	    
 	    System.out.println("Website -> Verifying MyList From User Profile To Unfollow**************");
-	    	    
+	    Reporter.log("Website -> Verifying MyList From User Profile To Unfollow");
 	    //click profile icon 
 	    WebDriverWait click_profile_icon2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_profile_icon2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(@class,'relative')])[1]"))).click();
@@ -429,19 +430,17 @@ public class Verify_MyList
 	    click_mylist2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[normalize-space()='My List']"))).click();
 	   
 	    Thread.sleep(10000);
-	    
-	    
-	    
+	
 	    //topic unfollow
 	    WebDriverWait load_page = new WebDriverWait(driver, Duration.ofSeconds(60));
-	    load_page.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'Obesity + Weight')]")));
+	    load_page.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div/div[2]/div/div[3]/div/div/div/div/div/div/a")));
 
-	    WebElement topic = driver.findElement(By.xpath("//div[contains(text(),'Obesity + Weight')]"));
+	    WebElement topic = driver.findElement(By.xpath("/html/body/div[1]/div/main/div/div[2]/div/div[3]/div/div/div/div/div/div/div[2]/div"));
 	    act.moveToElement(topic);
 	    
 	    Thread.sleep(3000);
 	    WebDriverWait click_follow = new WebDriverWait(driver, Duration.ofSeconds(30));
-	    click_follow.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[3]/button"))).click();
+	    click_follow.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div/div[2]/div/div[3]/div/div/div/div/div/div/div[3]/button"))).click();
 	
 	    System.out.println("Unfollow the topics");
 	    Thread.sleep(5000);
@@ -472,11 +471,12 @@ public class Verify_MyList
 	    
 	    System.out.println("Unfollow the channel");
 	    Thread.sleep(3000);
-	    
+	     
 	    //click go back  
 	    WebDriverWait click_goback = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_goback.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[1]/button"))).click();
 	    
+	    driver.quit();
 	    
 	}
 

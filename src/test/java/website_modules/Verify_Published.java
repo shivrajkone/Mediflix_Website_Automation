@@ -23,7 +23,7 @@ public class Verify_Published
 	String advice_question="Do vaccinations cause autism?";
 	String advice_question_location="MH";
 	String advice_slug="dshf";
-	
+	 
 	WebElement question;
 	WebElement question_location;
 	WebElement slug;
@@ -219,7 +219,8 @@ public class Verify_Published
 				
 		
 				System.out.println("Verify the created advice in website by search*********************");
-		
+				Reporter.log("Verify the created advice in website by search");
+				
 				WebElement click_search = driver.findElement(By.xpath("//a[@href='/search']"));
 				click_search.click();
 				

@@ -74,7 +74,7 @@ public class Verify_expert
 				Thread.sleep(4000);
 			
 				System.out.println("Verify the expert in website*********************");
-				
+				Reporter.log("Verify the expert in website");
 				//scroll
 			    JavascriptExecutor js = (JavascriptExecutor)driver; 
 			    js.executeScript("window.scrollBy(0,400)");

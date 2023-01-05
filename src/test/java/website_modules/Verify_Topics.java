@@ -120,7 +120,7 @@ public class Verify_Topics
 
 		 WebDriverWait coll_type_select = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 coll_type_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/div/ul/li[4]"))).click();
-		 
+		
 		 WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
 				 
@@ -146,7 +146,7 @@ public class Verify_Topics
 		 Thread.sleep(2000);
 		 
 		 WebDriverWait click_ramdom2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 click_ramdom2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='mui-123']"))).click();
+		 click_ramdom2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
 				 
 		 Thread.sleep(3000);
 		
@@ -311,8 +311,10 @@ public class Verify_Topics
 		 WebDriverWait coll_type_select = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 coll_type_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/div/ul/li[1]"))).click();
 		 
+		 Thread.sleep(2000);
+		 
 		 WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='mui-123']"))).click();
+		 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
 	
 		    //slug 
 		    slug = driver.findElement(By.xpath("//input[@id='slug']"));
@@ -385,7 +387,7 @@ public class Verify_Topics
 			 WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			 coll_searchbox.sendKeys(choose_topic);
 			 
-			Thread.sleep(4000);
+			 Thread.sleep(4000);
 			    
 			 WebDriverWait wait_edit = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 wait_edit.until(ExpectedConditions.elementToBeClickable(By.xpath("(//Button[@aria-label='Edit'])[1]"))).click();
@@ -466,14 +468,18 @@ public class Verify_Topics
 	@Test (priority=5)
 	public void Verify_The_Created_Collection_Topic() throws InterruptedException
 	{
-				driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
+				//driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
+				WebElement click_browser = driver.findElement(By.xpath("//a[normalize-space()='Browse']"));
+				click_browser.click();
+				
 				driver.manage().window().maximize();
 				 Actions act = new Actions(driver);
 				//click search 
-		
+		 
 				System.out.println("Verify the created collection(topic) and in website********************");
-	
-				WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				Reporter.log("Verify the created collection(topic) and in website");
+				
+				WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(60));
 			    load1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[1]/div/div/div/a")));
 					
 			    //scroll down
@@ -485,23 +491,23 @@ public class Verify_Topics
 			    
 			    Thread.sleep(3000);
 			    
-			    WebElement click_arrow2 =driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/button[2]"));
-			    click_arrow2.click();
+//			    WebElement click_arrow2 =driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/button[2]"));
+//			    click_arrow2.click();
 			    
 			    Thread.sleep(3000);
 			    
 			    
-			    String get_title =driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[11]/div/div/div/div[2]")).getText();
+			    String get_title =driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[8]/div/div/div/div[2]/div")).getText();
 			    System.out.println("the topic tile is_____________________"+get_title);
 			    		
 			    
-			    WebElement topic = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[11]/div/div/div/div[2]"));
+			    WebElement topic = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[8]/div/div/div/div[2]/div"));
 			    act.moveToElement(topic);
 			    
 			    //click topic  
 			    
 			    WebDriverWait click_topic = new WebDriverWait(driver, Duration.ofSeconds(60));
-			    click_topic.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[11]/div/div/div/a"))).click();
+			    click_topic.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[8]/div/div/div/a"))).click();
 					
 			    //load page  
 			    
@@ -572,22 +578,23 @@ public class Verify_Topics
 			    js3.executeScript("window.scrollBy(0,600)");
 			    
 			    
-			    Thread.sleep(3000);
+			    Thread.sleep(7000);
 			   //click channel   
 				
 				WebDriverWait click_channel = new WebDriverWait(driver, Duration.ofSeconds(30));
 				click_channel.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div[3]/div/div[3]/div/div/div/div/div/a"))).click();
 			
+				Thread.sleep(3000);
+				
 				//load  
 				
 				WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 				load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[1]/div[4]/span/img")));
 				
-				
 				//click learn more  
 				WebDriverWait learn = new WebDriverWait(driver, Duration.ofSeconds(30));
 				learn.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Learn more']"))).click();
-				
+
 				//title   
 				String s1 = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[1]/div[4]/div/div/div/div/div[3]/div/div[1]/div[2]/p")).getText();
 				System.out.println("the channel title is ________________"+s1);
@@ -607,10 +614,14 @@ public class Verify_Topics
 					AssertJUnit.assertEquals(firstword, channel_name);
 					Reporter.log( "[ERROR] -> Browse -> Topic -> Topic page -> Channel Name Is Not Same.");
 				}
+				
+				
 				driver.quit();
 				
 	}
 	
+	@Test (enabled = false)
+//	@Test (priority=6)
 	public void Delete_collection() throws InterruptedException
 	{
 		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");

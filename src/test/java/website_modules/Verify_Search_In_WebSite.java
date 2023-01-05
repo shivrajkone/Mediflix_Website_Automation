@@ -9,6 +9,7 @@ import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -22,7 +23,7 @@ public class Verify_Search_In_WebSite
 	String expert="Ray Dorsey, MD";
 	String channel="cdn";
 	String advice="What type of health care do I need?";
-      
+       
 	@Test (priority=1)
 	public void Verify_WebSite_Login() throws InterruptedException
 	{
@@ -72,8 +73,8 @@ public class Verify_Search_In_WebSite
 //				driver.manage().window().maximize();
 				//click search 
 		
-				System.out.println("Verify the search in Website*********************");
-		
+		 System.out.println("Verify the search in Website*********************");
+		 Reporter.log("Verify the search in Website");
 				WebElement click_search = driver.findElement(By.xpath("//a[@href='/search']"));
 				click_search.click();
 				
@@ -83,7 +84,7 @@ public class Verify_Search_In_WebSite
 			    load3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='text']")));
 			   
 		 System.out.println("Verify the topic search*********************");		
-				
+		 Reporter.log("Verify the topic search");
 			    WebElement search =driver.findElement(By.xpath("//input[@type='text']"));
 				search.sendKeys(topic);
 				
@@ -107,7 +108,7 @@ public class Verify_Search_In_WebSite
 				Thread.sleep(3000);
 				
 			System.out.println("Verify the video search*********************");	
-				
+			Reporter.log("Verify the video search");
 				WebElement search2 =driver.findElement(By.xpath("//input[@type='text']"));
 				search2.clear();
 				search2.sendKeys(video);
@@ -129,7 +130,7 @@ public class Verify_Search_In_WebSite
 				Thread.sleep(3000);
 				
 			System.out.println("Verify the expert search*********************");	
-				
+			Reporter.log("Verify the expert search");
 				WebElement search3 =driver.findElement(By.xpath("//input[@type='text']"));
 				search3.clear();
 				search3.sendKeys(expert);
@@ -152,7 +153,7 @@ public class Verify_Search_In_WebSite
 				
 
 		 System.out.println("Verify the advice search*********************");	
-				
+		 Reporter.log("Verify the advice search");
 				WebElement search5 =driver.findElement(By.xpath("//input[@type='text']"));
 				search5.clear();
 				search5.sendKeys(advice);
@@ -174,7 +175,7 @@ public class Verify_Search_In_WebSite
 				Thread.sleep(3000);
 				
 		 System.out.println("Verify the channel search*********************");	
-				
+		 Reporter.log("Verify the channel search");
 				WebElement search4 =driver.findElement(By.xpath("//input[@type='text']"));
 				search4.clear();
 				search4.sendKeys(channel);

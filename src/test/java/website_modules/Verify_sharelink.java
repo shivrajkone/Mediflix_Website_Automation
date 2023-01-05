@@ -15,14 +15,14 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import access.login;
+import access.Website_login_dev;
 
-public class Verify_sharelink extends login
+public class Verify_sharelink extends Website_login_dev
 {
 
 //	ChromeDriver driver; 
 	SoftAssert softAssert = new SoftAssert();
-	  
+	   
 	@Test (priority=1)
 	public void Verify_Topic_Sharelink() throws InterruptedException
 	{
@@ -34,7 +34,8 @@ public class Verify_sharelink extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]")));
 	
 		System.out.println("Website -> Verify the share link in topic**************");
-	
+		Reporter.log("Website -> Verify the share link in topic");
+		
 		// click topic
 		
 		WebDriverWait click_topic = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -110,7 +111,7 @@ public class Verify_sharelink extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]")));
 	
 		System.out.println("Website -> Verify the share link in advice**************");
-		
+		Reporter.log("Website -> Verify the share link in advice");
 		Thread.sleep(5000);
 	
 		// click advice
@@ -188,7 +189,7 @@ public class Verify_sharelink extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]")));
 	
 		System.out.println("Website -> Verify the share link in expert**************");
-	
+		Reporter.log("Website -> Verify the share link in expert");
 		//scroll
 	    JavascriptExecutor js = (JavascriptExecutor)driver; 
 	    js.executeScript("window.scrollBy(0,400)");
@@ -265,6 +266,7 @@ public class Verify_sharelink extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='leading-180 whitespace-pre-line text-lg md:text-xl']")));
 	
 		System.out.println("Website -> Verify the share link in channel**************");
+		Reporter.log("Website -> Verify the share link in channel");
 		Thread.sleep(5000);
 		//click channel   
 		
@@ -365,7 +367,7 @@ public class Verify_sharelink extends login
 		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(@class,'leading-180 whitespace-pre-line text-lg md:text-xl')]")));
 	
 		System.out.println("Website -> Verify the share link in videos**************");
-	
+		Reporter.log("Website -> Verify the share link in videos");
 		// click video
 		
 		WebDriverWait click_video = new WebDriverWait(driver, Duration.ofSeconds(30));

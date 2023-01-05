@@ -76,7 +76,7 @@ public class Verify_listed
 		 
 	 	WebDriverWait create_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 	 	create_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div[2]/button[2]"))).click();
-	 	
+	 	 
 	 	Thread.sleep(3000);
 	 	 
 	 	name = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[1]/div/div/div[1]/div/textarea[1]"));
@@ -179,7 +179,7 @@ public class Verify_listed
 				//click search 
 		
 				System.out.println("Verify the created content in website by search*********************");
-		
+				Reporter.log("Verify the created content in website by search");
 				WebElement click_search = driver.findElement(By.xpath("//a[@href='/search']"));
 				click_search.click();
 				

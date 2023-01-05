@@ -260,7 +260,8 @@ public class Verify_Content
 				//click search 
 		
 				System.out.println("Verify the created content in website by search*********************");
-		
+				Reporter.log("Verify the created content in website by search");
+				
 				WebElement click_search = driver.findElement(By.xpath("//a[@href='/search']"));
 				click_search.click();
 				
