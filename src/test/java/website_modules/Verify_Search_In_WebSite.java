@@ -1,6 +1,8 @@
 package website_modules;
 
+import java.io.FileReader;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,11 +15,17 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class Verify_Search_In_WebSite 
-{
-	ChromeDriver driver; 
-	SoftAssert softAssert = new SoftAssert();
+import Common.Credentials;
 
+public class Verify_Search_In_WebSite extends Credentials
+{
+	SoftAssert softAssert = new SoftAssert();
+	
+	public static Properties prop = new Properties();
+	public static FileReader fr;
+	
+	Credentials C1 =new Credentials();
+	
 	String topic="Global Health";
 	String video="Planet";
 	String expert="Ray Dorsey, MD";
@@ -28,41 +36,7 @@ public class Verify_Search_In_WebSite
 	public void Verify_WebSite_Login() throws InterruptedException
 	{
 		
-		String Email="kashinath112@mailinator.com";
-		String Password="Shivraj@12345";
-		
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
-	    driver = new ChromeDriver();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/login");
-	    driver.manage().window().maximize();
-	    
-	    Thread.sleep(4000);
-	    
-	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
-		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[normalize-space()='Log In']"))).click();
-	    
-	    WebElement email = driver.findElement(By.xpath("//input[@placeholder='Email']"));
-	    email.sendKeys(Email);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
-	    password.sendKeys(Password);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
-	    submit.click();
-	    
-	    Thread.sleep(3000);
-	    
-	    WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-	    load2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")));
-	
-	    // get data
-	    String get_title = driver.findElement(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")).getText();
-	    System.out.println("the login title of user is_________________"+get_title);
-	    
+		C1.Website_Login();
 		
 	}
 	

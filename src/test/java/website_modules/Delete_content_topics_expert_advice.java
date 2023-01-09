@@ -1,6 +1,9 @@
 package website_modules;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,22 +13,39 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Common.Credentials;
 import access.admin_login_dev;
 
-public class Delete_content_topics_expert_advice extends admin_login_dev
+public class Delete_content_topics_expert_advice extends Credentials
 {
 	
 	SoftAssert softAssert = new SoftAssert();
+	
+//	public static Properties prop = new Properties();
+//	public static FileReader fr;
+	
+	Credentials C1 =new Credentials();
+	
+
+	@BeforeTest 
+	public void Verify_CMS_Credentials() throws IOException
+	{
+		C1.CMS_Login();
+	}
+	
 	
 	@Test (priority=1)
 //	@Test (enabled = false)
 	public void Verify_Delete_Video_Content() throws InterruptedException
 	{
 		
-		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+		WebElement click_content = driver.findElement(By.xpath("//button[@aria-label='Content']"));
+		click_content.click();	
 		driver.manage().window().maximize();
  	 	
 	 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -123,12 +143,14 @@ public class Delete_content_topics_expert_advice extends admin_login_dev
 	public void Verify_Delete_Collection() throws InterruptedException
 	{
 		
-		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
+		WebElement click_collection = driver.findElement(By.xpath("//button[@aria-label='Collections']"));
+		click_collection.click();
 		driver.manage().window().maximize();
-		
+		Thread.sleep(5000);
  	 	
 	 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(60));
-	 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	 	load.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-colindex='0']"))).click();
 	 				
 	 	System.out.println("Collection -> Verifying Delete the Created Collection and Child Collection*****************");
 		Reporter.log("Collection -> Verifying Delete the Created Collection and Child Collection");
@@ -297,11 +319,13 @@ public class Delete_content_topics_expert_advice extends admin_login_dev
 	public void Verify_Delete_Expert() throws InterruptedException
 	{
 		 
-		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
+		WebElement click_expert = driver.findElement(By.xpath("//button[@aria-label='Experts']"));
+		click_expert.click();
 		driver.manage().window().maximize();
 		
 	 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(60));
-	 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-colindex='0']"))).click();
 	 				
 	 	System.out.println("Expert -> Verifying Delete the Created Expert*****************");
 		Reporter.log("Expert -> Verifying Delete the Created Expert");
@@ -333,18 +357,24 @@ public class Delete_content_topics_expert_advice extends admin_login_dev
 //	@Test (enabled = false)
 	public void Verify_Delete_Advice() throws InterruptedException
 	{
-		
-		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+	
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+	
+		WebElement click_advice = driver.findElement(By.xpath("//button[@aria-label='Advice']"));
+		click_advice.click();
 		driver.manage().window().maximize();
+		Thread.sleep(5000);
 		
 	 	System.out.println("Advice -> Verifying Delete the Created Advice*****************");
 		Reporter.log("Advice ->  Verifying Delete the Created Advice");
 	
 		WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(60));
-	 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
-	 				
+		load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[2]"))).click();		
+		
 		WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 		coll_searchbox.sendKeys(prop.getProperty("advice_question"));
+		
+		Thread.sleep(5000);
 		
 		WebDriverWait wait_edit = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait_edit.until(ExpectedConditions.elementToBeClickable(By.xpath("(//Button[@aria-label='Edit'])[1]"))).click();
@@ -378,7 +408,92 @@ public class Delete_content_topics_expert_advice extends admin_login_dev
 		 System.out.println("Deleted the advice");
 		 Thread.sleep(8000);
 		 
-		 driver.quit();
+		 
 	}
+	
+	@Test (priority=5)
+//	@Test (enabled = false)
+	public void Verify_Delete_Institution() throws InterruptedException
+	{
+		
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
+		WebElement click_coll = driver.findElement(By.xpath("//button[@aria-label='Collections']"));
+		click_coll.click();
+		driver.manage().window().maximize();
+		
+		
+		WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(60));
+	 	load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-colindex='0']"))).click();
+	 																	
+	 	System.out.println("Institution -> Verifying Delete the Created Institution*****************");
+		Reporter.log("Institution ->  Verifying Delete the Created Institution");
+	
+		// remove the institution from collection
+		
+		System.out.println("Institution -> Verifying remove the institution from collection*****************");
+		Reporter.log("Institution ->  Verifying Remove The Tnstitution From Collection");
+		
+//		WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(60));
+//	 	load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	 																	
+		WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
+		coll_searchbox.sendKeys(prop.getProperty("inst_coll"));
+		
+		Thread.sleep(5000);
+		
+		WebDriverWait wait_edit = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait_edit.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//Button[@aria-label='Edit'])[1]"))).click();
+			    	
+		Thread.sleep(4000);
+
+		//click the input and remove the institution 
+		
+		WebElement inst_input_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div/input"));
+		inst_input_click.click();
+		Thread.sleep(2000);
+		inst_input_click.sendKeys(Keys.BACK_SPACE);
+		
+		//click ramdom  
+		
+		WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(60));
+		click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+			    	
+		Thread.sleep(2000);
+		
+		WebDriverWait save1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		save1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Save']"))).click();
+		 
+		Thread.sleep(10000);
+		
+		//delete the institution
+		
+		WebElement click_institution = driver.findElement(By.xpath("//button[@aria-label='Institutions']"));
+		click_institution.click();
+			
+		System.out.println("Institution -> Verifying Delete the institution*****************");
+		Reporter.log("Institution ->  Verifying Delete The Institution");
+		
+		WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(60));
+	 	load3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	 																	
+		WebElement inst_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
+		inst_searchbox.sendKeys(prop.getProperty("inst_name2"));
+		
+		Thread.sleep(5000);
+		
+		WebDriverWait delete_icon = new WebDriverWait(driver, Duration.ofSeconds(30));
+		delete_icon.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@aria-label='Delete'])[1]"))).click();
+		
+		Thread.sleep(3000);
+		
+		WebDriverWait delete_button = new WebDriverWait(driver, Duration.ofSeconds(30));
+		delete_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		
+		Thread.sleep(10000);
+		
+		driver.close();
+		
+	}
+	
 
 }

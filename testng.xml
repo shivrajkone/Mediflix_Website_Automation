@@ -6,14 +6,16 @@
       <class name="website_modules.Verify_Content"/>
       <class name="website_modules.Verify_listed"/>
       <class name="website_modules.Verify_Published"/>
-      <class name="website_modules.Verify_sharelink"/>
+       
       <class name="website_modules.Verify_Topics"/>
       <class name="website_modules.Verify_expert_cms_to_website"/>
-        <class name="website_modules.Verify_MyList"/>
+      <class name="website_modules.Verify_Institution"/>
+      
+     	<class name="website_modules.Verify_MyList"/>
    	 	<class name="website_modules.Verify_Search_In_WebSite"/>
-     	<class name="website_modules.Verify_Institution"/>
-     	 
-     	<class name="website_modules.Delete_content_topics_expert_advice"/>
+     	<class name="website_modules.Verify_sharelink"/>
+     	
+     <class name="website_modules.Delete_content_topics_expert_advice"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

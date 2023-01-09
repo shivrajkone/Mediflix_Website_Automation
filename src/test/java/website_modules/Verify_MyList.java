@@ -1,5 +1,6 @@
 package website_modules;
 
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import access.Website_login_dev;
@@ -15,12 +16,23 @@ import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import Common.Credentials;
+
+import java.io.FileReader;
 import java.time.Duration;
+import java.util.Properties;
  
-public class Verify_MyList 
+public class Verify_MyList extends Credentials
 {
-	ChromeDriver driver; 
+
 	SoftAssert softAssert = new SoftAssert();
+	
+	public static Properties prop = new Properties();
+	public static FileReader fr;
+	
+	Credentials C1 =new Credentials();
+	
 	String topic_name;
 	String video_name;
 	String expert_name;
@@ -28,55 +40,25 @@ public class Verify_MyList
 
 	
 	
-	@Test (priority=1)
+	@BeforeTest 
 	public void Verify_WebSite_Login() throws InterruptedException
 	{
 		
-		String Email="kashinath112@mailinator.com";
-		String Password="Shivraj@12345";
-		
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
-	    driver = new ChromeDriver();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/login");
-	    driver.manage().window().maximize();
-	    
-	    Thread.sleep(4000);
-	    
-	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
-		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[normalize-space()='Log In']"))).click();
-	    
-	    WebElement email = driver.findElement(By.xpath("//input[@placeholder='Email']"));
-	    email.sendKeys(Email);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
-	    password.sendKeys(Password);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
-	    submit.click();
-	    
-	    Thread.sleep(3000);
-	    
-	    WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-	    load2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")));
-	
-	    // get data
-	    String get_title = driver.findElement(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")).getText();
-	    System.out.println("the login title of user is_________________"+get_title);
-	    
+		C1.Website_Login();
 		
 	}
 
-	 @Test (priority=2)
+	 @Test (priority=1)
 //	 @Test (enabled = false)
     public void Follow_Topics_Video_Expert_Channel() throws InterruptedException 
 	{
 		
 		driver.manage().window().maximize();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
+//	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
+		
+		WebElement click_browse = driver.findElement(By.xpath("//a[normalize-space()='Browse']"));
+		click_browse.click();
+		
 	    Actions act = new Actions(driver);
 
 	    
@@ -207,14 +189,13 @@ public class Verify_MyList
 	
 	}  
 	
-	 @Test (priority=3)
+	 @Test (priority=2)
 //	 @Test (enabled = false)
 	public void Verify_The_Following_Topics_Expert_Videos_Channel() throws InterruptedException
 	{
 		
 		driver.manage().window().maximize();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
-	 //   driver.navigate().refresh();
+//	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
 	    
 	    
 	    //load
@@ -409,18 +390,20 @@ public class Verify_MyList
 	}
 
 	
-	 @Test (priority=4)
+	 @Test (priority=3)
 //	 @Test (enabled = false)
 	public void Unfollow_Topics_Videos_Expert_channel() throws InterruptedException
 	{
 		driver.manage().window().maximize();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
+//	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
 	    Actions act = new Actions(driver);
 	    //load
 	    Thread.sleep(7000);
 	    
 	    System.out.println("Website -> Verifying MyList From User Profile To Unfollow**************");
 	    Reporter.log("Website -> Verifying MyList From User Profile To Unfollow");
+	    
+	    Thread.sleep(5000);
 	    //click profile icon 
 	    WebDriverWait click_profile_icon2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_profile_icon2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(@class,'relative')])[1]"))).click();

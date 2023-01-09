@@ -1,6 +1,8 @@
 package website_modules;
 
+import java.io.FileReader;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,17 +14,31 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Common.Credentials;
 import access.Website_login_dev;
 
-public class Verify_sharelink extends Website_login_dev
+public class Verify_sharelink extends Credentials
 {
 
-//	ChromeDriver driver; 
 	SoftAssert softAssert = new SoftAssert();
+	
+	public static Properties prop = new Properties();
+	public static FileReader fr;
+	
+	Credentials C1 =new Credentials();
 	   
+
+	@BeforeTest
+	public void website_login() throws InterruptedException
+	{
+		C1.Website_Login();
+	}
+	
+	
 	@Test (priority=1)
 	public void Verify_Topic_Sharelink() throws InterruptedException
 	{
