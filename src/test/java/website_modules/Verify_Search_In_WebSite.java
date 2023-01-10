@@ -1,6 +1,8 @@
 package website_modules;
 
+import java.io.FileReader;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,73 +11,44 @@ import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class Verify_search 
-{
-	
-	
-	ChromeDriver driver; 
-	SoftAssert softAssert = new SoftAssert();
+import Common.Credentials;
 
+public class Verify_Search_In_WebSite extends Credentials
+{
+	SoftAssert softAssert = new SoftAssert();
+	
+	public static Properties prop = new Properties();
+	public static FileReader fr;
+	
+	Credentials C1 =new Credentials();
+	
 	String topic="Global Health";
 	String video="Planet";
 	String expert="Ray Dorsey, MD";
 	String channel="cdn";
 	String advice="What type of health care do I need?";
- 
+       
 	@Test (priority=1)
-	public void website_login() throws InterruptedException
+	public void Verify_WebSite_Login() throws InterruptedException
 	{
 		
-		String Email="kashinath112@mailinator.com";
-		String Password="Shivraj@12345";
-		
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
-	    driver = new ChromeDriver();
-	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/login");
-	    driver.manage().window().maximize();
-	    
-	    Thread.sleep(4000);
-	    
-	    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
-		load1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[normalize-space()='Log In']"))).click();
-	    
-	    WebElement email = driver.findElement(By.xpath("//input[@placeholder='Email']"));
-	    email.sendKeys(Email);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
-	    password.sendKeys(Password);
-	    
-	    Thread.sleep(2000);
-	    
-	    WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
-	    submit.click();
-	    
-	    Thread.sleep(3000);
-	    
-	    WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-	    load2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")));
-	
-	    // get data
-	    String get_title = driver.findElement(By.xpath("//div[@class='container max-w-[1200px] mx-auto wrapper']")).getText();
-	    System.out.println("the login title of user is_________________"+get_title);
-	    
+		C1.Website_Login();
 		
 	}
 	
 	@Test (priority=4)
-	public void verify_serach_working() throws InterruptedException
+	public void Verify_Search_Working() throws InterruptedException
 	{
 //				driver.get("https://client-portal.us-east-1.dev.mediflix.com/browse");
 //				driver.manage().window().maximize();
 				//click search 
 		
-				System.out.println("Verify the search in Website*********************");
-		
+		 System.out.println("Verify the search in Website*********************");
+		 Reporter.log("Verify the search in Website");
 				WebElement click_search = driver.findElement(By.xpath("//a[@href='/search']"));
 				click_search.click();
 				
@@ -85,7 +58,7 @@ public class Verify_search
 			    load3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='text']")));
 			   
 		 System.out.println("Verify the topic search*********************");		
-				
+		 Reporter.log("Verify the topic search");
 			    WebElement search =driver.findElement(By.xpath("//input[@type='text']"));
 				search.sendKeys(topic);
 				
@@ -109,7 +82,7 @@ public class Verify_search
 				Thread.sleep(3000);
 				
 			System.out.println("Verify the video search*********************");	
-				
+			Reporter.log("Verify the video search");
 				WebElement search2 =driver.findElement(By.xpath("//input[@type='text']"));
 				search2.clear();
 				search2.sendKeys(video);
@@ -131,7 +104,7 @@ public class Verify_search
 				Thread.sleep(3000);
 				
 			System.out.println("Verify the expert search*********************");	
-				
+			Reporter.log("Verify the expert search");
 				WebElement search3 =driver.findElement(By.xpath("//input[@type='text']"));
 				search3.clear();
 				search3.sendKeys(expert);
@@ -154,7 +127,7 @@ public class Verify_search
 				
 
 		 System.out.println("Verify the advice search*********************");	
-				
+		 Reporter.log("Verify the advice search");
 				WebElement search5 =driver.findElement(By.xpath("//input[@type='text']"));
 				search5.clear();
 				search5.sendKeys(advice);
@@ -176,7 +149,7 @@ public class Verify_search
 				Thread.sleep(3000);
 				
 		 System.out.println("Verify the channel search*********************");	
-				
+		 Reporter.log("Verify the channel search");
 				WebElement search4 =driver.findElement(By.xpath("//input[@type='text']"));
 				search4.clear();
 				search4.sendKeys(channel);
@@ -201,13 +174,11 @@ public class Verify_search
 			    //get channel name
 			    String channel_verify = driver.findElement(By.xpath("//p[@class='text-lg']")).getText();
 			    System.out.println("channel is_________________"+channel_verify);
+			    
+			    driver.quit();
 				
 				
 				
 	}
-	
-	
-	
-	
 	
 }

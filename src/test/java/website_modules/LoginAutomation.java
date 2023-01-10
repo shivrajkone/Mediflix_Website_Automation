@@ -42,9 +42,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
-import access.login;
+import access.Website_login_dev;
 
-
+    
 public class LoginAutomation 
 {
 	ChromeDriver driver; 
@@ -55,7 +55,7 @@ public class LoginAutomation
 	
 	WebElement search;
 	String key="Psychosis";
-	 
+	  
 	
 	 
 	@Test (priority =1)
