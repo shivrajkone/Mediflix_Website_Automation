@@ -17,8 +17,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.asserts.SoftAssert;
 
- 
-public class login 
+       
+public class Website_login_dev 
 {
 	public static ChromeDriver driver;
 	public static Properties prop = new Properties();
@@ -27,7 +27,7 @@ public class login
 	String Email="kashinath112@mailinator.com";
 	String Password="Shivraj@12345";
 	 
-	
+	 
 	@BeforeTest
 	public void Local_Storage() throws IOException, InterruptedException
 	{
