@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Credentials 
 {
-	
+	 
 	public static ChromeDriver driver;
 	public static Properties prop = new Properties();
 	public static FileReader fr;
