@@ -1,30 +1,53 @@
 package website_modules;
+ 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import java.util.Random;
+import java.util.Arrays;
+import java.util.Properties;
 
 public class Onboarding 
 {
-	ChromeDriver driver;
 	
+	ChromeDriver driver; 
+	SoftAssert softAssert = new SoftAssert();
+	
+	public static Properties prop = new Properties();
+	public static FileReader fr;
+	
+	
+//	@Test (enabled = false)
 	@Test (priority=1)
-	public  void Signup() throws InterruptedException {
-		// TODO Auto-generated method stub
+	public void Sign_up() throws InterruptedException
+	{
+	
 		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
 		WebDriver driver = new ChromeDriver(); // create object
 		driver.manage().window().maximize();
 		driver.get("https://client-portal.us-east-1.dev.mediflix.com/sign-up");
+		
+		Random r1 = new Random();
+		
+		String name = "MediPlus";
+		int no = r1.nextInt(99);   
+	    String domain = "@gmail.com";
+	
+	    String emailid = name + no + domain;
+//	    System.out.println("the newly created emailid is___________"+emailid);
 
 		driver.findElement(By.name("name")).sendKeys("Sandhya");
-		driver.findElement(By.name("email")).sendKeys("flixt57@gmail.com");
+		driver.findElement(By.name("email")).sendKeys(emailid);
 		Thread.sleep(2000);
 
 		WebElement country_send = driver.findElement(By.id("country"));
@@ -43,174 +66,19 @@ public class Onboarding
 		Thread.sleep(10000);
 
 //		Onboarding obj1 = new Onboarding();
-//		// obj1.check1(driver);
+		// obj1.check1(driver);
 //		obj1.check2(driver);
 
 		// driver.close();
-	}
-
-//	@Test (priority=2)
-	@Test (enabled = false)
-	public void check1(WebDriver driver) throws InterruptedException 
-	{
-		//Expert Question Answers 
-		// Actions act = new Actions(driver);
+		
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	 	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2"))).click();
+	 	
+		
 		String hd = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText();
 		System.out.println("Headline:" + hd);
-		Thread.sleep(2000);
-		System.out.println("Selected Question: "
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[1]/div[3]")).getText());
-		driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[1]/div[6]")).click();
-		Thread.sleep(4000);
-		driver.findElement(By
-				.xpath("//button[@class='Button_btn__R8YYU Button_btnLg__KLDWo rounded-lg px-6 bg-purple-2 text-white ring-white Button_btnPrimary__joyb2']"))
-				.click();
 		Thread.sleep(10000);
-		System.out.println("Did you Know? :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		driver.findElement(By.xpath("//span[@class='relative']")).click();
-		Thread.sleep(10000);
-		System.out.println("Topic Selection Screen :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		driver.findElement(
-				By.xpath("//body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
-				.click();
-		System.out.println("Selected Topic :" + driver
-				.findElement(By
-						.xpath("//body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
-				.getText());
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my topics (1)']")).click();
-		System.out.println("Expert Selection Screen :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-
-		/*
-		 * WebElement view=driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"
-		 * )); act.moveToElement(view); Thread.sleep(2000);
-		 * driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[1]/div[2]/button/span"
-		 * )).click(); driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div[2]/div[2]/div[1]/div[3]/button"
-		 * )).click();
-		 */
-
-		Thread.sleep(10000);
-		System.out.println("Selected Expert :" + driver
-				.findElement(By
-						.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.getText());
-		driver.findElement(By
-				.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.click();
-
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my experts (1)']")).click();
-
-		System.out.println("Care Package Selection Screen :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		Thread.sleep(10000);
-		System.out.println("Selected Care Package :" + driver
-				.findElement(By
-						.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.getText());
-		driver.findElement(By
-				.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.click();
-		// driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[1]/div[2]/button/span")).click();
-		// driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div[2]/div[2]/div[1]/div[3]/button")).click();
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my collection']")).click();
-		Thread.sleep(10000);
-		// System.out.println("Appecues:"
-		// +driver.findElement(By.xpath("//span[contains(text(),'Welcome to
-		// Mediflix!')]")).getText());
-
-	}
-
-//	@Test (priority=3)
-	@Test (enabled = false)
-	public void check3(WebDriver driver) throws InterruptedException 
-	{
-		// Instrest in Org
-		// Actions act = new Actions(driver);
-		String hd = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText();
-		System.out.println("Headline:" + hd);
-		Thread.sleep(2000);
-
-		System.out.println("Selected Question: "
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[1]/div[6]")).getText());
-		driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[1]/div[6]")).click();
-		Thread.sleep(4000);
-
-		driver.findElement(By
-				.xpath("//button[@class='Button_btn__R8YYU Button_btnLg__KLDWo rounded-lg px-6 bg-purple-2 text-white ring-white Button_btnPrimary__joyb2']"))
-				.click();
-		Thread.sleep(10000);
-		System.out.println("Did you Know? :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/button[2]/span")).click();
-		Thread.sleep(10000);
-		System.out.println("Topic Selection Screen :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		driver.findElement(
-				By.xpath("//body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
-				.click();
-		System.out.println("Selected Topic :" + driver
-				.findElement(By
-						.xpath("//body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
-				.getText());
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my topics (1)']")).click();
-		System.out.println("Expert Selection Screen :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-
-		/*
-		 * WebElement view=driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"
-		 * )); act.moveToElement(view); Thread.sleep(2000);
-		 * driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[1]/div[2]/button/span"
-		 * )).click(); driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div[2]/div[2]/div[1]/div[3]/button"
-		 * )).click();
-		 */
-
-		Thread.sleep(10000);
-		System.out.println("Selected Expert :" + driver
-				.findElement(By
-						.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.getText());
-		driver.findElement(By
-				.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.click();
-
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my experts (1)']")).click();
-
-		System.out.println("Care Package Selection Screen :"
-				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		Thread.sleep(10000);
-		System.out.println("Selected Care Package :" + driver
-				.findElement(By
-						.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.getText());
-		driver.findElement(By
-				.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
-				.click();
-		// driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[1]/div[2]/button/span")).click();
-		// driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div[2]/div[2]/div[1]/div[3]/button")).click();
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my collection']")).click();
-		Thread.sleep(10000);
-		// System.out.println("Appecues:"
-		// +driver.findElement(By.xpath("//span[contains(text(),'Welcome to
-		// Mediflix!')]")).getText());
-
-	}
-	
-	@Test (priority=2)
-	public void check2() throws InterruptedException 
-	{
-		//Redirect trusted medical institutions 
-
-		String hd = driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText();
-		System.out.println("Headline:" + hd);
-		Thread.sleep(2000);
 
 		System.out.println("Selected Questions: "
 				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[1]/div[1]")).getText());
@@ -239,28 +107,40 @@ public class Onboarding
 		Thread.sleep(10000);
 		System.out.println("Topic Selection Screen :"
 				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
-		driver.findElement(
-				By.xpath("//body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
-				.click();
+		
+		//wait for topics selection 
+		
+		WebDriverWait wait_topic = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait_topic.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))).click();
+	 	
+		
+//		driver.findElement(
+//				By.xpath("/html/body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
+//				.click();
+		
 		System.out.println("Selected Topic :" + driver
 				.findElement(By
-						.xpath("//body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
+						.xpath("/html/body[1]/div[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[3]"))
 				.getText());
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my topics (1)']")).click();
+		
+		
+	//	driver.findElement(By.xpath("//span[normalize-space()='Submit my topics (1)']")).click();
+		//scroll
+	    JavascriptExecutor js = (JavascriptExecutor)driver; 
+	    js.executeScript("window.scrollBy(0,500)");
+	    
+	    WebDriverWait wait_submit = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    wait_submit.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[4]/button"))).click();
+	 	
+		
+		
+		
 		System.out.println("Expert Selection Screen :"
 				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
 
-		/*
-		 * WebElement view=driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"
-		 * )); act.moveToElement(view); Thread.sleep(2000);
-		 * driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[1]/div[2]/button/span"
-		 * )).click(); driver.findElement(By.xpath(
-		 * "/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div[2]/div[2]/div[1]/div[3]/button"
-		 * )).click();
-		 */
-
+	
+		
+		
 		Thread.sleep(10000);
 		System.out.println("Selected Expert :" + driver
 				.findElement(By
@@ -269,9 +149,13 @@ public class Onboarding
 		driver.findElement(By
 				.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[2]/p[1]"))
 				.click();
+		
+		
 
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my experts (1)']")).click();
+	    driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[4]/button[2]")).click();
 
+		
+		
 		System.out.println("Care Package Selection Screen :"
 				+ driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/h2")).getText());
 		Thread.sleep(10000);
@@ -284,16 +168,19 @@ public class Onboarding
 				.click();
 		// driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/div[1]/div/div/div[1]/div[2]/button/span")).click();
 		// driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[3]/div/div[2]/div[2]/div[1]/div[3]/button")).click();
-		driver.findElement(By.xpath("//span[normalize-space()='Submit my collection']")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div/div/div[4]/button[2]")).click();
 		Thread.sleep(10000);
 
-		System.out.println("Appecues :"
-				+ driver.findElement(By.xpath("/html/body/appcues/cue/section/div/div[2]/div/div/div/div/div/div/h1/span/span/span/span/span/span")).getText());
+//		System.out.println("Appecues :"
+//				+ driver.findElement(By.xpath("/html/body/appcues/cue/section/div/div[2]/div/div/div/div/div/div/h1/span/span/span/span/span/span")).getText());
 		
-
-
-	}
+		
+		
+		
 	
+		
+	}
+
 	
 
 }

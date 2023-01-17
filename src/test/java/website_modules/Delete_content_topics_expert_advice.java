@@ -1,5 +1,5 @@
 package website_modules;
-
+ 
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
@@ -170,20 +170,40 @@ public class Delete_content_topics_expert_advice extends Credentials
 			    	
 		 Thread.sleep(3000);
 		 
-		 //click child coll   
-		 WebDriverWait click_child_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 click_child_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[2]/div/div/div/input"))).click();
+		 //click child coll    
+		 WebElement click_child_coll = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[2]/div/div/div/input"));
+		 click_child_coll.click();                                  
 		 
 		 Thread.sleep(2000);
-		 
-		 WebElement coll_name = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[2]/div/div/div/input"));
-		 coll_name.click();
-		 coll_name.sendKeys(Keys.BACK_SPACE);
-		 
+
+		 WebDriverWait click_cross_icon = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_cross_icon.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@title='Clear'])[2]"))).click();
+		
+		 Thread.sleep(2000);
+			//add all child collections
+			
+		 	click_child_coll.sendKeys("Parkinson's Disease (121)");
+			WebDriverWait click1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li"))).click();
+				   
+			click_child_coll.sendKeys("Heart Health (114)");
+			WebDriverWait click2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li"))).click();
+				   
+			click_child_coll.sendKeys("Obesity + Weight (124)");
+			WebDriverWait click3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li"))).click();
+			
+			click_child_coll.sendKeys("Brain Health (110)");
+			WebDriverWait click4 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click4.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li"))).click();
+
 		 //click remove button
 		 
 		 WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+		 
+		 Thread.sleep(5000);
 		 
 		 //save  
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -219,6 +239,8 @@ public class Delete_content_topics_expert_advice extends Credentials
 		 
 		 WebDriverWait click_ramdom2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 click_ramdom2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+		 
+		 Thread.sleep(5000);
 		 
 		 //save  
 		 WebDriverWait save2 = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -451,8 +473,35 @@ public class Delete_content_topics_expert_advice extends Credentials
 		WebElement inst_input_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div/input"));
 		inst_input_click.click();
 		Thread.sleep(2000);
-		inst_input_click.sendKeys(Keys.BACK_SPACE);
+//		inst_input_click.sendKeys(Keys.BACK_SPACE);
 		
+		
+		WebDriverWait click_cross_icon = new WebDriverWait(driver, Duration.ofSeconds(60));
+		click_cross_icon.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div/div[7]/button[1]"))).click();
+			   
+		//add all institution again
+		
+		inst_input_click.sendKeys("Cleveland Clinic");
+		WebDriverWait click1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+			   
+		inst_input_click.sendKeys("Yale Medicine");
+		WebDriverWait click2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+			   
+		inst_input_click.sendKeys("Northwell");
+		WebDriverWait click3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+		
+		inst_input_click.sendKeys("Parkinson's TV");
+		WebDriverWait click4 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click4.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+		
+		inst_input_click.sendKeys("CDN");
+		WebDriverWait click5 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click5.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+		
+			
 		//click ramdom  
 		
 		WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -469,7 +518,9 @@ public class Delete_content_topics_expert_advice extends Credentials
 		
 		WebElement click_institution = driver.findElement(By.xpath("//button[@aria-label='Institutions']"));
 		click_institution.click();
-			
+		
+		Thread.sleep(10000);
+		
 		System.out.println("Institution -> Verifying Delete the institution*****************");
 		Reporter.log("Institution ->  Verifying Delete The Institution");
 		

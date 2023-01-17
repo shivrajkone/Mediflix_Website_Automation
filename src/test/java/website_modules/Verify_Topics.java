@@ -1,5 +1,5 @@
 package website_modules;
-
+ 
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
@@ -449,7 +449,7 @@ public class Verify_Topics extends Credentials
 			    
 			    Thread.sleep(3000);
 			    
-			    
+			    //it will read the text of 5 element in website
 			    String get_title =driver.findElement(By.xpath("/html/body/div[1]/div/main/div[2]/div[1]/div/div[3]/div/div/div[5]/div/div/div/div[2]/div")).getText();
 			    System.out.println("the topic tile is_____________________"+get_title);
 			    		

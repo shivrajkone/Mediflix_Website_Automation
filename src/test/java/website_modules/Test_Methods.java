@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Properties;
  
 import org.openqa.selenium.By;
@@ -82,11 +83,61 @@ public class Test_Methods extends Credentials
 
 		WebElement inst_input_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div/input"));
 		inst_input_click.click();
+				
+		WebDriverWait click_cross_icon = new WebDriverWait(driver, Duration.ofSeconds(60));
+		click_cross_icon.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div/div[7]/button[1]"))).click();
+			   
+		//add all institution again
 		
-		String read_input_type = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div")).getText();
-		System.out.println("the input text are "+read_input_type);
+		inst_input_click.sendKeys("Cleveland Clinic");
+		WebDriverWait click1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+			   
+		inst_input_click.sendKeys("Yale Medicine");
+		WebDriverWait click2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+			   
+		inst_input_click.sendKeys("Northwell");
+		WebDriverWait click3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+		
+		inst_input_click.sendKeys("Parkinson's TV");
+		WebDriverWait click4 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click4.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+		
+		inst_input_click.sendKeys("CDN");
+		WebDriverWait click5 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click5.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
+		
+		inst_input_click.sendKeys("Cornell");
+		WebDriverWait click6 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		click6.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[7]/div/ul/li"))).click();
 		
 		
+		
+//		String read_input_type = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[6]/div/div")).getText();
+
+//		System.out.println("the input text are "+read_input_type);
+		
+//		String s1 = read_input_type;
+//		System.out.println("s1 stores ______- "+s1);
+		
+//		String[] words = read_input_type.split(" ");
+//		
+//		System.out.println("words are_________ "+Arrays.toString(words));
+//		String target = "Cornell";
+//		boolean match = false;
+//		for (String word : words) {
+//		    if (word.equals(target)) {
+//		        match = true;
+//		        break;
+//		    }
+//		}
+//		if (match) {
+//		    System.out.println("one of the institution is matching");
+//		} else {
+//		    System.out.println("one of the institution is not matching");
+//		}
 		
 		
 		
@@ -100,14 +151,15 @@ public class Test_Methods extends Credentials
 		
 		//click ramdom  
 		
-//		WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(60));
-//		click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
-//			    	
-//		Thread.sleep(2000);
-//		
-//		WebDriverWait save1 = new WebDriverWait(driver, Duration.ofSeconds(30));
-//		save1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Save']"))).click();
-//		 
+		WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(60));
+		click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+			    	
+		Thread.sleep(2000);
+		
+		WebDriverWait save1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		save1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Save']"))).click();
+		 
+		Thread.sleep(7000);
 //			 driver.quit();
 		 
 	}
