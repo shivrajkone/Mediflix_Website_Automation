@@ -199,7 +199,7 @@ public class Verify_MyList extends Credentials
 	    
 	    
 	    //load
-	    Thread.sleep(7000);
+	    Thread.sleep(10000);
 	    
 	    System.out.println("Website -> Verifying MyList From User Profile**************");
 	    Reporter.log("Website -> Verifying MyList From User Profile");
@@ -386,6 +386,8 @@ public class Verify_MyList extends Credentials
 			AssertJUnit.assertEquals(bio, bio);
 			Reporter.log( "[ERROR] -> Website -> Advice -> Expert -> Expert Bio Is Not Present.");
 		}
+	    
+	    
 		
 	}
 
@@ -395,15 +397,17 @@ public class Verify_MyList extends Credentials
 	public void Unfollow_Topics_Videos_Expert_channel() throws InterruptedException
 	{
 		driver.manage().window().maximize();
-//	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
+	    driver.get("https://client-portal.us-east-1.dev.mediflix.com/journey");
+	    Thread.sleep(10000);
+	    
 	    Actions act = new Actions(driver);
 	    //load
-	    Thread.sleep(7000);
+	   
 	    
 	    System.out.println("Website -> Verifying MyList From User Profile To Unfollow**************");
 	    Reporter.log("Website -> Verifying MyList From User Profile To Unfollow");
 	    
-	    Thread.sleep(5000);
+	    Thread.sleep(10000);
 	    //click profile icon 
 	    WebDriverWait click_profile_icon2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    click_profile_icon2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(@class,'relative')])[1]"))).click();

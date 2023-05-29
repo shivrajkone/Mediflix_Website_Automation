@@ -56,7 +56,7 @@ public class Verify_Content extends Credentials
 
 //	@Test (enabled = false)
 	@Test (priority=1)
-	public void Verify_CMS_Credentials() throws IOException
+	public void Verify_CMS_Credentials() throws IOException, InterruptedException
 	{
 		C1.CMS_Login();
 	}

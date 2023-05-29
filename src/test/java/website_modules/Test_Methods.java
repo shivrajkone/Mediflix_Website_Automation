@@ -38,7 +38,7 @@ public class Test_Methods extends Credentials
 	
 //	@Test (enabled = false)
 	@Test (priority=1)
-	public void Admin_Login() throws IOException
+	public void Admin_Login() throws IOException, InterruptedException
 	{
 	
 		

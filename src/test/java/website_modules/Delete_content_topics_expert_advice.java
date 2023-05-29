@@ -32,7 +32,7 @@ public class Delete_content_topics_expert_advice extends Credentials
 	
 
 	@BeforeTest 
-	public void Verify_CMS_Credentials() throws IOException
+	public void Verify_CMS_Credentials() throws IOException, InterruptedException
 	{
 		C1.CMS_Login();
 	}

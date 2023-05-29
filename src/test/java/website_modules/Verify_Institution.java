@@ -42,7 +42,7 @@ public class Verify_Institution extends Credentials
 	
 //	@Test (enabled = false)
 	@Test (priority=1)
-	public void Verify_CMS_Credentials() throws IOException
+	public void Verify_CMS_Credentials() throws IOException, InterruptedException
 	{
 		
 		C1.CMS_Login();
@@ -261,6 +261,7 @@ public class Verify_Institution extends Credentials
 	@Test (priority=5)
 	public void Verify_The_Created_Institution() throws InterruptedException
 	{
+			Thread.sleep(10000);
 			//driver.get("https://client-portal.us-east-1.dev.mediflix.com/advice");
 			WebElement click_channels = driver.findElement(By.xpath("//a[normalize-space()='Channels']"));
 			click_channels.click();	
